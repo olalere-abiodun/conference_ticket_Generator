@@ -75,6 +75,7 @@ label {
     color: hsl(252, 6%, 83%);
     font-size: 20px;
     margin-bottom:10px;
+    margin-top: 20px;
 }
 .input {
     border: 2px solid hsl(245, 19%, 35%);
@@ -84,7 +85,7 @@ label {
     font-size: 20px;
     color: hsl(252, 6%, 83%);
     background-color: hsla(245, 19%, 35%, 0.5);
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     box-sizing: border-box;
 }
 .input::placeholder {
@@ -102,11 +103,9 @@ label {
     color: hsl(248, 70%, 10%);
     background-color: hsl(7, 88%, 67%);
     margin-bottom: 20px;
+    margin-top: 20px;
     box-sizing: border-box;
     cursor: pointer;
-}
-.avatar {
-    margin-bottom: 20px;
 }
 .avatar-upload {
     border: 2px dashed  hsl(245, 19%, 35%);
@@ -116,15 +115,27 @@ label {
     align-items: center;
     justify-content: center;
     width: 500px;
-    height: 120px;
+    height: 150px;
     padding-top: 15px;
+    padding-bottom: 15px;
     border-radius: 10px;
     color: hsl(245, 19%, 35%);
     background-color: hsla(245, 19%, 35%, 0.5);
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     margin-top: 20px;
     box-sizing: border-box;
 
+}
+.upload-buttons {
+    display: none;
+    gap: 20px;
+}
+.upload-buttons span {
+    cursor: pointer;
+    color: hsl(252, 6%, 83%);
+    background-color: hsl(245, 19%, 35%);
+    padding: 6px 12px;
+    border-radius: 5px;
 }
 .avatar-upload img {
     background-color: hsl(245, 19%, 35%);
@@ -136,5 +147,28 @@ label {
     font-size: 12px;
     display: flex;
     gap: 5px;
+    margin-top: 10px;
 }
+
+.avatar-error {
+    color: hsl(7, 71%, 60%);
+    font-size: 12px;
+    display: none;
+    gap: 5px;
+    margin-top: 5px;
+}
+.avatar-error img {
+
+  filter: invert(38%) sepia(88%) saturate(3746%) hue-rotate(347deg) brightness(95%) contrast(96%);
+}
+.error {
+  border: 2px solid hsl(7, 71%, 60%);
+}
+.avatar-preview-img {
+  height: 30px;
+  width: 30px;
+  border: 1px solid hsl(252, 6%, 83%);
+}
+
+
 
