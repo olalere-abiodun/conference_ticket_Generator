@@ -1,9 +1,19 @@
-import React from "react";
+import React, {useState } from "react";
 import Input from "./Input";
 import Label from "./Label";
 import Avatar from "./Avatar";
 
 function Form() {
+  const [error, setError] = useState(false);
+  const [email, setEmail] = useState("")
+
+  function checkEmail(e) {
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+
+    const valid = /\S+@\S+\.\S+/.test(emailValue);
+    setError(!valid);
+  }
   
   return (
    <form action="">
@@ -11,22 +21,24 @@ function Form() {
         <Label text="Full Name" />
         <Input
           className="input"
-          type="input"
+          type="text"
         />
         <Label text="Email Address" />
         <Input
-          className="input"
-          type="input"
+          className={`input ${error ? "error" : ""}`}
+          type="email"
+          value = {email}
           placeholder="example@email.com"
+          onChange = {checkEmail}
         />
-        <div className="avatar-error">
+        <div className="avatar-error" style={{ display: error ? "flex" : "none" }}>
             <img src="/assets/images/icon-info.svg" alt="User Avatar" />
-            <span>Upload your photo (JPEG or PNG, Max size: 500KB)</span>
+            <span>Please enter a valid e-mail</span>
         </div>
         <Label text="GitHub Username" />
         <Input
           className="input"
-          type="input"
+          type="text"
           placeholder="@yourusername"
         />
         <Input

@@ -3,18 +3,6 @@
   padding: 0;
   margin: 0;
 }
-/* body {
-  background-image: 
-    url("../images/background-desktop.png"),   
-    url("../images/pattern-squiggly-line-bottom-desktop.svg"), 
-    url("../images/pattern-squiggly-line-top.svg"); 
-
-  background-repeat: no-repeat, no-repeat, no-repeat;
-
-  background-position: center, bottom left, top right;
-
-  background-size: cover, auto, auto;
-} */
 
 html, body {
   min-height: auto;
@@ -32,7 +20,7 @@ body {
     url("../images/background-desktop.png");
 
   background-repeat: no-repeat, no-repeat,no-repeat, no-repeat, no-repeat;
-  background-position: left -60px bottom 0px, top 50px right,center,right 250px center, center;
+  background-position: left -60px bottom 0px, top 50px right,center,right 290px top 460px, center;
   background-size: auto, auto,auto,auto, cover;
 }
 #root {
@@ -57,12 +45,22 @@ body {
   text-align: center;
 
 }
+.heading span {
+    background: linear-gradient(to right, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; 
+  color: transparent; 
+}
 .description {
   color: hsl(252, 6%, 83%);
   margin: 25px auto 0 auto; /* top 25px, left/right auto */
   font-size: 20px;
   text-align: center;
 
+}
+.description span {
+  color: hsl(7, 88%, 67%);
 }
 form {
     margin-top: 50px;
@@ -168,6 +166,10 @@ label {
   height: 30px;
   width: 30px;
   border: 1px solid hsl(252, 6%, 83%);
+}
+.ticket {
+  margin-top: 100px;
+  margin-bottom: 200px;
 }
 
 

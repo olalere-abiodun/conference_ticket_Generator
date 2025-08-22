@@ -1,15 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Label from "./Label";
 import Upload from "./Upload";
 
 function Avatar() {
-  const [preview, setPreview] = useState(false);
+  const [preview, setPreview] = useState(null);
   const [error, setError] = useState(false);
+
+  const fileInputRef = useRef(null);
+
+  const validateFile = (file) => {
+    if (!file) return;
+
+    // check file size (500KB = 500 * 1024 bytes)
+    if (file.size > 500 * 1024) {
+      setError(true);
+      setPreview(null); // clear preview if invalid
+      return;
+    }
+
+    // check file type (only jpeg/png)
+    if (!["image/jpeg", "image/png"].includes(file.type)) {
+      setError(true);
+      setPreview(null);
+      return;
+    }
+
+    // valid file
+    setError(false);
+    setPreview(URL.createObjectURL(file));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    validateFile(file);
+  };
+
+  const handleDivClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    validateFile(file);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+    // 🔹 this was missing
+  const removeImage = () => {
+    setPreview(null);
+    setError(false);
+    fileInputRef.current.value = ""; // clear file input too
+  };
 
   return (
     <div className="avatar">
       <Label text="Upload Avatar" />
-      <div className="avatar-upload" >
+      <div
+        className="avatar-upload"
+        onClick={handleDivClick}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+      >
         {preview ? (
           <img
             src={preview}
@@ -19,23 +74,25 @@ function Avatar() {
         ) : (
           <img src="/assets/images/icon-upload.svg" alt="User Avatar" />
         )}
-           <input
-      id="fileInput"
-      type="file"
-      accept="image/*"
-      style={{ display: "none" }}
-      // onChange={}
-    />
+
+        {/* hidden file input */}
+        <input
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
+
         <div className="avatar-text">
           <Label
             text="Drag and Drop or click to upload"
             style={{ display: preview ? "none" : "flex" }}
-            htmlFor="fileInput"
-            
           />
-          <Upload preview={preview} />
+          <Upload preview={preview}  removeImage={removeImage}/>
         </div>
       </div>
+
       <div
         className="avatar-preview"
         style={{ display: error ? "none" : "flex" }}
@@ -43,6 +100,7 @@ function Avatar() {
         <img src="/assets/images/icon-info.svg" alt="User Avatar" />
         <span>Upload your photo (JPEG or PNG, Max size: 500KB)</span>
       </div>
+
       <div
         className="avatar-error"
         style={{ display: error ? "flex" : "none" }}
