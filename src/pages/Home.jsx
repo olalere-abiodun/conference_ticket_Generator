@@ -1,17 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "../components/header";
 import Heading from "../components/Heading";
 import Form from "../components/Form";
-import {Link} from "react-router-dom"
 
 
 function Home() {
+   const [formData, setFormData] = useState(null);
+
+  const handleSubmit = (data) => {
+    setFormData(data);
+    console.log("Form submitted:", data);
+  };
   return (
     <div className="app">
       <Header />
       <Heading />
-      <Form />
-      <Link to="/generate">Next</Link>
+      <Form onSubmit={handleSubmit} />
      
     </div>
   );

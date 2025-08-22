@@ -1,6 +1,7 @@
 import React from "react";
 
-const Ticket = () => {
+const Ticket = ({ data }) => {
+  const { avatarFile, fullName,email, github } = data;
   return (
     <div className="ticket">
       <svg
@@ -13,16 +14,16 @@ const Ticket = () => {
         <g filter="url(#a)">
           <mask id="d" fill="#fff">
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M0 12C0 5.373 5.373 0 12 0h438.958c5.37 0 9.876 3.759 12.94 8.169C468.863 15.319 477.135 20 486.5 20s17.637-4.681 22.602-11.831c3.064-4.41 7.57-8.169 12.94-8.169H588c6.627 0 12 5.373 12 12v256c0 6.627-5.373 12-12 12h-65.958c-5.37 0-9.876-3.759-12.94-8.169C504.137 264.681 495.865 260 486.5 260s-17.637 4.681-22.602 11.831c-3.064 4.41-7.57 8.169-12.94 8.169H12c-6.627 0-12-5.373-12-12V12Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </mask>
           <path
             fill="url(#b)"
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M0 12C0 5.373 5.373 0 12 0h438.958c5.37 0 9.876 3.759 12.94 8.169C468.863 15.319 477.135 20 486.5 20s17.637-4.681 22.602-11.831c3.064-4.41 7.57-8.169 12.94-8.169H588c6.627 0 12 5.373 12 12v256c0 6.627-5.373 12-12 12h-65.958c-5.37 0-9.876-3.759-12.94-8.169C504.137 264.681 495.865 260 486.5 260s-17.637 4.681-22.602 11.831c-3.064 4.41-7.57 8.169-12.94 8.169H12c-6.627 0-12-5.373-12-12V12Z"
-            clip-rule="evenodd"
+            clipRule="evenodd"
           />
           <path
             fill="url(#c)"
@@ -102,8 +103,8 @@ const Ticket = () => {
             y2="306.194"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#fff" stop-opacity=".3" />
-            <stop offset="1" stop-color="#fff" stop-opacity=".1" />
+            <stop stopColor="#fff" stopOpacity=".3" />
+            <stop offset="1" stopColor="#fff" stopOpacity=".1" />
           </linearGradient>
           <linearGradient
             id="c"
@@ -113,8 +114,8 @@ const Ticket = () => {
             y2="139.351"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#fff" />
-            <stop offset="1" stop-color="#F37362" />
+            <stop stopColor="#fff" />
+            <stop offset="1" stopColor="#F37362" />
           </linearGradient>
           <filter
             id="a"
@@ -122,10 +123,10 @@ const Ticket = () => {
             height="360"
             x="-40"
             y="-40"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feGaussianBlur in="BackgroundImageFix" stdDeviation="20" />
             <feComposite
               in2="SourceAlpha"
@@ -151,62 +152,72 @@ const Ticket = () => {
           <text
             x="175"
             y="45"
-            text-anchor="middle"
+            textAnchor="middle"
             fill="hsl(0, 0%, 100%)"
-            font-size="35"
-            font-weight="bold"
+            fontSize="35"
+            fontWeight="bold"
           >
             Coding Conf
           </text>
           <text
             x="185"
             y="80"
-            text-anchor="middle"
+            textAnchor="middle"
             fill="hsl(245, 15%, 58%)"
-            font-size="17"
-            font-weight="500"
+            fontSize="17"
+            fontWeight="500"
           >
             Jan 31, 2025 / Austin, TX
           </text>
           <g transform="translate(20,180)">
-            <image
+            {/* <image
               href="../assets/images/image-avatar.jpg"
               width="80"
               height="80"
               clip-path="url(#avatarClip)"
+            /> */}
+             {avatarFile && (
+            <image
+              href={URL.createObjectURL(avatarFile)}
+              width="80"
+              height="80"
+              clipPath="url(#avatarClip)"
             />
+          )}
           </g>
             <text
                 x="115"
                 y="210"
-                text-anchor="start"
+                textAnchor="start"
                 fill="hsl(252, 6%, 83%)"
-                font-size="27"
-                font-weight="500"
-                
+                fontSize="27"
+                fontWeight="500"
+
             >
-                Jonatan Kristof
+                {/* Jonatan Kristof */}
+                {fullName || "Your Name"}
             </text>
             <image href="../assets/images/icon-github.svg" x="115" y="230"/>
             <text
                 x="145"
                 y="250"
-                text-anchor="start"
+                textAnchor="start"
                 fill="hsl(252, 6%, 83%)"
-                font-size="18"
-                font-weight="500"
-                
+                fontSize="18"
+                fontWeight="500"
+
             >
-                @jonatankristof0101
+                {/* @jonatankristof0101 */}
+                {github || "@yourusername"}
             </text>
         </g>
         <text
                 x="330"
                 y="435"
-                text-anchor="start"
+                textAnchor="start"
                 fill="hsl(245, 15%, 58%)"
-                font-size="27"
-                font-weight="500"
+                fontSize="27"
+                fontWeight="500"
                 transform="rotate(-90, 320, 200)"
                 
             >

@@ -2,10 +2,9 @@ import React, { useState, useRef } from "react";
 import Label from "./Label";
 import Upload from "./Upload";
 
-function Avatar() {
+function Avatar({onFileChange}) {
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState(false);
-
   const fileInputRef = useRef(null);
 
   const validateFile = (file) => {
@@ -15,6 +14,7 @@ function Avatar() {
     if (file.size > 500 * 1024) {
       setError(true);
       setPreview(null); // clear preview if invalid
+      onFileChange(null); // notify parent no valid file
       return;
     }
 
@@ -22,12 +22,14 @@ function Avatar() {
     if (!["image/jpeg", "image/png"].includes(file.type)) {
       setError(true);
       setPreview(null);
+      onFileChange(null); // notify parent no valid file
       return;
     }
 
     // valid file
     setError(false);
     setPreview(URL.createObjectURL(file));
+    onFileChange(file); // notify parent with valid file
   };
 
   const handleFileChange = (e) => {
@@ -49,11 +51,12 @@ function Avatar() {
     e.preventDefault();
   };
 
-    // 🔹 this was missing
+  
   const removeImage = () => {
     setPreview(null);
     setError(false);
     fileInputRef.current.value = ""; // clear file input too
+    onFileChange(null); // notify parent no valid file
   };
 
   return (
