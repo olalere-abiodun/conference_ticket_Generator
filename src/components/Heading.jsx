@@ -4,7 +4,7 @@ function Heading() {
   return (
     <div>
         <h1 className="heading">Your Journey to Coding Conf 2025 Starts Here!</h1>
-        <p className="description">Secure your spot at next year's biggest event for coding Conference.</p>
+        <p className="description">Secure your spot at next year's biggest coding Conference.</p>
     </div>
   );
 }

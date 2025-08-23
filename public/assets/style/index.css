@@ -7,7 +7,7 @@
 html, body {
   min-height: auto;
   margin: 0;
-  padding: 0;
+  /* padding-bottom: 100px; */
   font-family: 'Inconsolata', monospace;
 }
 
@@ -20,22 +20,23 @@ body {
     url("../images/background-desktop.png");
 
   background-repeat: no-repeat, no-repeat,no-repeat, no-repeat, no-repeat;
-  background-position: left -60px bottom 0px, top 50px right,center,right 290px top 460px, center;
-  background-size: auto, auto,auto,auto, cover;
+  background-position: left -100px bottom, top 60px right,center,right 270px top 520px, center;
+  background-size: 1000px auto, auto,auto,auto, cover;
 }
 #root {
     display: flex;
     justify-content: center;
     min-height: 100vh;
     box-sizing: border-box;
-    padding-top: 30px;
+    padding-top: 40px;
+    padding-bottom: 70px;
 }
 .app {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 50px;
+    /* margin-bottom: 60px; */
 }
 .heading {
   color: hsl(0, 0%, 100%);
@@ -55,7 +56,7 @@ body {
 .description {
   color: hsl(252, 6%, 83%);
   margin: 25px auto 0 auto; /* top 25px, left/right auto */
-  font-size: 20px;
+  font-size: 24px;
   text-align: center;
 
 }
@@ -63,11 +64,11 @@ body {
   color: hsl(7, 88%, 67%);
 }
 form {
-    margin-top: 50px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* ⬅️ keeps form elements left-aligned */
-  text-align: left;        /* ⬅️ ensures text inside isn’t centered */
+  align-items: flex-start; 
+  text-align: left;        
 }
 label {
     color: hsl(252, 6%, 83%);
@@ -75,6 +76,9 @@ label {
     margin-bottom:10px;
     margin-top: 20px;
 }
+ .avatar-upload label {
+    color: hsl(245, 15%, 58%) !important;
+  }
 .input {
     border: 2px solid hsl(245, 19%, 35%);
     width: 500px;
@@ -87,7 +91,7 @@ label {
     box-sizing: border-box;
 }
 .input::placeholder {
-    color: hsl(252, 6%, 83%);
+    color: hsl(245, 15%, 58%);
     font-weight: 400;
 }
 
@@ -101,7 +105,7 @@ label {
     color: hsl(248, 70%, 10%);
     background-color: hsl(7, 88%, 67%);
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -171,6 +175,62 @@ label {
   margin-top: 100px;
   margin-bottom: 200px;
 }
+/* 
+@media screen and (max-width: 1200px) {
 
 
+
+
+} */
+
+@media (max-width: 376px) {
+  body {
+  background-image: 
+  url("../images/pattern-squiggly-line-bottom-desktop.svg"),
+  url("../images/pattern-squiggly-line-top.svg"),
+  url("../images/pattern-lines.svg"),
+  url("../images/pattern-circle.svg"),
+  url("../images/background-mobile.png");
+  background-repeat:no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position:left -250px bottom, top 30px right,top,right -40px top 630px, center;
+  background-size: 200% auto, 100px auto, 850px auto,100px auto, cover;
+}
+.header-logo {
+  width: 190px;
+}
+.heading {
+  font-size: 28px !important;
+  width: 320px;
+  text-align: center;
+}
+
+
+
+  .input, .submit, .avatar-upload {
+    width: 90vw;
+  }
+
+  .description {
+    font-size: 18px !important;
+    margin: 20px auto 0 auto; /* top 20px, left/right auto */
+    padding: 0 40px;
+    width: 310px !important;
+    line-height: 20px;
+  }
+  .avatar-upload label {
+    color: hsl(245, 15%, 58%);
+    font-size: 18px;
+    margin-bottom: 10px;
+    
+  }
+
+   .ticket svg {
+    width: 80vw; /* reduce size on smaller screens */
+    height: auto; /* keeps proportions */
+  }
+
+
+
+
+}
 

@@ -101,7 +101,7 @@ function Avatar({onFileChange}) {
         style={{ display: error ? "none" : "flex" }}
       >
         <img src="/assets/images/icon-info.svg" alt="User Avatar" />
-        <span>Upload your photo (JPEG or PNG, Max size: 500KB)</span>
+        <span style={{ color: "hsl(245, 15%, 58%)" }}>Upload your photo (JPEG or PNG, Max size: 500KB)</span>
       </div>
 
       <div

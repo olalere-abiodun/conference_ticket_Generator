@@ -3,7 +3,7 @@ import React from "react";
 
 function Header() {
   return (
-    <img src="/assets/images/logo-full.svg" alt="Conference Ticket Generator" />
+    <img className="header-logo" src="/assets/images/logo-full.svg" alt="Conference Ticket Generator" />
   );
 }
 
