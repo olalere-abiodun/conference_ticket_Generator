@@ -176,14 +176,14 @@ label {
   margin-bottom: 200px;
 }
 /* 
-@media screen and (max-width: 1200px) {
+@media (max-width: 475px) {
 
 
 
 
 } */
 
-@media (max-width: 376px) {
+@media (max-width: 476px) {
   body {
   background-image: 
   url("../images/pattern-squiggly-line-bottom-desktop.svg"),
